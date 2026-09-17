@@ -45,6 +45,7 @@ class Alert:
     previous_cents: Optional[int]
     current_cents: Optional[int]
     observed_at: str
+    notes: list[str] = field(default_factory=list)
 
     def to_dict(self) -> dict:
         return asdict(self)

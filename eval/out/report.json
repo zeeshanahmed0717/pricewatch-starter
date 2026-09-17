@@ -1,0 +1,45 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "n": 90,
+  "overall": {
+    "price_exact": 0.5333333333333333,
+    "currency": 0.8777777777777778,
+    "availability": 0.9444444444444444,
+    "pack_size": 0.9111111111111111
+  },
+  "per_store": {
+    "nordkart": {
+      "n": 45,
+      "price_exact": 0.8,
+      "currency": 0.7555555555555555,
+      "availability": 0.9333333333333333,
+      "pack_size": 0.9555555555555556
+    },
+    "bazaario": {
+      "n": 45,
+      "price_exact": 0.26666666666666666,
+      "currency": 1.0,
+      "availability": 0.9555555555555556,
+      "pack_size": 0.8666666666666667
+    }
+  },
+  "errors": {
+    "timeout": 0,
+    "malformed_output": 0,
+    "provider_error": 0
+  },
+  "cost": {
+    "input_tokens": 18312,
+    "output_tokens": 4514,
+    "usd_estimate": 0.018
+  },
+  "latency_ms": {
+    "p50": 1139.04,
+    "p95": 1645.68
+  },
+  "baseline": {
+    "price_exact": 0.0
+  },
+  "elapsed_s": 111.1
+}

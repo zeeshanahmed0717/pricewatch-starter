@@ -55,9 +55,16 @@ def extract_corner(client: Client, store: str, url: str, html: str) -> Observati
 @adapter("maple")
 def extract_maple(client: Client, store: str, url: str, html: str) -> Observation:
     soup = BeautifulSoup(html, "html.parser")
-    name = soup.select_one(".product__title").get_text(strip=True)
-    price_el = soup.select_one(".price .price")  # first price element in the price block
-    price_cents, currency = parse_money(price_el.get_text(" ", strip=True), "EUR")
+    title = soup.select_one(".product__title")
+    name = title.get_text(strip=True) if title else ""
+    sale_el = soup.select_one(".price--sale")
+    if sale_el is None:
+        sale_el = soup.select_one(".price")
+    if sale_el is not None:
+        text = sale_el.get_text(" ", strip=True)
+        price_cents, currency = parse_money(text, "EUR")
+    else:
+        price_cents, currency = None, "EUR"
     compare_el = soup.select_one(".price--compare")
     compare, _ = parse_money(compare_el.get_text(" ", strip=True), currency) if compare_el else (None, None)
     avail = "out_of_stock" if "Sold out" in soup.get_text() else "in_stock"
